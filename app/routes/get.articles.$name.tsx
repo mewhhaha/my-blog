@@ -17,6 +17,11 @@ export default route(
       return html(200, <Html>Failed to fetch article</Html>);
     }
 
-    return html(200, <Html>{marked(await response.text())}</Html>);
+    return html(
+      200,
+      <Html>
+        <article class="prose-2xl">{marked(await response.text())}</article>
+      </Html>,
+    );
   },
 );
