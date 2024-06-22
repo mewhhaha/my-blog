@@ -2,11 +2,12 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["es2022"],
-    "module": "es2022",
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "types": ["@types/node"],
     "resolveJsonModule": true,
     "allowJs": true,
+    "noEmit": true,
     "checkJs": false,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,

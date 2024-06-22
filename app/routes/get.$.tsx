@@ -7,12 +7,10 @@ export default route("/*", [], async () => {
     200,
     <Html>
       <h1 class="flex text-xl">Trying out htmx</h1>
-      <form>
+      <form hx-post={to("/add-entry")} hx-swap="innerHTML">
         <input type="text" name="name" placeholder="enter your name" />
 
-        <button hx-post={to("/add-entry")} hx-swap="outerhtml">
-          refresh
-        </button>
+        <button>refresh</button>
       </form>
     </Html>,
   );
