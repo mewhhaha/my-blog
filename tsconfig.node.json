@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["es2022"],
+    "module": "es2022",
+    "moduleResolution": "NodeNext",
+    "types": ["@types/node"],
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": false,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "composite": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["eslint.config.mjs", "tailwind.config.ts"]
+}

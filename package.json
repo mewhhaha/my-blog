@@ -1,0 +1,32 @@
+{
+  "name": "htmx",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "upload": "pnpm css && pnpm routes && wrangler deploy",
+    "dev": "run-p dev.*",
+    "dev.css": "tailwindcss -o tailwind.css --watch",
+    "dev.routes": "little-worker routes --watch",
+    "dev.wrangler": "wrangler dev",
+    "routes": "little-worker routes",
+    "css": "tailwindcss -o tailwind.css"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240620.0",
+    "@mewhhaha/little-worker": "^0.1.5",
+    "@types/node": "^20.14.8",
+    "eslint-plugin-tailwindcss": "^3.17.4",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.4.4",
+    "typed-fetch": "github:mewhhaha/little-worker",
+    "typescript": "^5.4.5",
+    "wrangler": "^3.60.3"
+  },
+  "packageManager": "pnpm@9.4.0+sha512.f549b8a52c9d2b8536762f99c0722205efc5af913e77835dbccc3b0b0b2ca9e7dc8022b78062c17291c48e88749c70ce88eb5a74f1fa8c4bf5e18bb46c8bd83a",
+  "dependencies": {
+    "@eslint/js": "^9.5.0",
+    "eslint": "^9.5.0",
+    "typed-htmx": "^0.3.1",
+    "typescript-eslint": "^7.13.1"
+  }
+}

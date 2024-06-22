@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["es2022"],
+    "module": "es2022",
+    "moduleResolution": "Bundler",
+    "types": ["@cloudflare/workers-types/2023-07-01", "typed-htmx"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "typed-htmx/typed-html",
+    "resolveJsonModule": true,
+
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "include": ["app"]
+}
