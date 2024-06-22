@@ -19,8 +19,10 @@ export const to = <PATH extends RouteData["paths"]>(
 
   const segments = path.split("/").map((segment) => {
     if (segment.startsWith(":")) {
-      return params[segment as keyof typeof params];
+      return params[segment.slice(1) as keyof typeof params];
     }
+
+    return segment;
   });
 
   return segments.join("/");
