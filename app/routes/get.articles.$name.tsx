@@ -25,6 +25,7 @@ export default route(
 
     const articleUrl = `${env.REPOSITORY_URL}/${env.GIT_SHA}/articles`;
 
+    console.log(articleUrl);
     const md = new Request(new URL(`${encodeURI(name)}.md`, articleUrl), {
       method: "GET",
       headers: {

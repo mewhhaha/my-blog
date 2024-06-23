@@ -13,7 +13,7 @@ rules = [
 ]
 
 [vars]
-REPOSITORY = "https://raw.githubusercontent.com/mewhhaha/my-blog"
+REPOSITORY_URL = "https://raw.githubusercontent.com/mewhhaha/my-blog"
 GIT_SHA = "main"
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
