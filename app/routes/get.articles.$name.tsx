@@ -27,7 +27,10 @@ export default route(
 
     const md = new Request(new URL(`${encodeURI(name)}.md`, articleUrl), {
       method: "GET",
-      headers: { "Cache-Control": "max-age" },
+      headers: {
+        "Cache-Control":
+          env.GIT_SHA === "main" ? "" : "max-age=31536000, immutable",
+      },
     });
 
     const response = await cached(md);
