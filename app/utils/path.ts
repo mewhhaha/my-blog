@@ -22,6 +22,10 @@ export const to = <PATH extends RouteData["paths"]>(
       return params[segment.slice(1) as keyof typeof params];
     }
 
+    if (segment === "*") {
+      return params["*" as keyof typeof params];
+    }
+
     return segment;
   });
 

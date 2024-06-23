@@ -1,5 +1,4 @@
-// @ts-expect-error The css is there, 100%
-import css from "../../tailwind.css";
+import css from "../../public/tailwind.css";
 
 type HtmlProps = {
   children?: JSX.Element;
@@ -12,9 +11,12 @@ export const Html = ({ children }: HtmlProps) => {
       <html>
         <head>
           <script src="https://unpkg.com/htmx.org@2.0.0"></script>
+          <script src="https://unpkg.com/htmx-ext-morphdom-swap@2.0.0/morphdom-swap.js"></script>
           <style>{css}</style>
         </head>
-        <body>{children}</body>
+        <body hx-ext="morphdom-swap" class="p-4">
+          {children}
+        </body>
       </html>
     )
   );

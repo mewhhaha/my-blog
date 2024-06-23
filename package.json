@@ -5,15 +5,16 @@
   "scripts": {
     "upload": "pnpm css && pnpm routes && wrangler deploy",
     "dev": "run-p dev.*",
-    "dev.css": "tailwindcss -o tailwind.css --watch",
+    "dev.css": "tailwindcss -o public/tailwind.css --watch",
     "dev.routes": "little-worker routes --watch",
     "dev.wrangler": "wrangler dev",
     "routes": "little-worker routes",
-    "css": "tailwindcss -o tailwind.css"
+    "css": "tailwindcss -o public/tailwind.css",
+    "logs": "wrangler tail"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240620.0",
-    "@mewhhaha/little-worker": "^0.1.5",
+    "@mewhhaha/little-worker": "^0.1.7",
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20.14.8",
     "eslint-plugin-tailwindcss": "^3.17.4",

@@ -20,5 +20,5 @@
     "skipLibCheck": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["app"]
+  "include": ["app", "public/types.d.ts"]
 }

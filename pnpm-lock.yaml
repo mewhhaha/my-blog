@@ -28,8 +28,8 @@ importers:
         specifier: ^4.20240620.0
         version: 4.20240620.0
       '@mewhhaha/little-worker':
-        specifier: ^0.1.5
-        version: 0.1.5(prettier@3.3.2)
+        specifier: ^0.1.7
+        version: 0.1.7(prettier@3.3.2)
       '@tailwindcss/typography':
         specifier: ^0.5.13
         version: 0.5.13(tailwindcss@3.4.4)
@@ -313,31 +313,31 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@mewhhaha/json-string@0.1.4':
-    resolution: {integrity: sha512-sD9doAIS3R3AzhFHo6pvebje2GCw184r3pwjxON98Tq1MoE0vgJzShCK/pjtCmgNMphSIWhIdcmI73iJgwR8Kg==}
+  '@mewhhaha/json-string@0.1.5':
+    resolution: {integrity: sha512-axkEKniJAUtfd82u7aAxoR4DsNnZRvOst+XXjv/KHUy6EVftzTMBxKbR9QJV2lDCjQgtaet5B9ar5/dN/PagTg==}
 
-  '@mewhhaha/little-fetcher@0.1.4':
-    resolution: {integrity: sha512-COBsMxHvP/BGXs1nie2Al1HX1Y/7iNBF5HiFRU2/y3VLGjqqCAvKKumVv6k8ZY3QkWk3aPyL0AX0fOXhk84G6g==}
+  '@mewhhaha/little-fetcher@0.1.5':
+    resolution: {integrity: sha512-ylSADEfm8tTeZ7kheoF7Z9LbkJOT1yLuzK+yNKz9CvNeW3NeImrYKi+KeNOrXdmjPxzU893DarPHGW3DXIXCEA==}
 
-  '@mewhhaha/little-router@0.1.4':
-    resolution: {integrity: sha512-0/m7n/ZiEd4KkJ5YjVPIPP/Oo0ZtyrcZiiy8k0C1nwiNxk8lunp//aAzQ4PoR3HfT5Rr2r5ithWobbBtQP4i4g==}
+  '@mewhhaha/little-router@0.1.5':
+    resolution: {integrity: sha512-4/TcOz2nDNlQVpGewcamcxy75SiUb4UX2qqF7MNhF31hpeVTBdQQBhVTTbUlZaspvxTSKrdOeDCKMXK/Mhwh2g==}
 
-  '@mewhhaha/little-worker-cli@0.1.5':
-    resolution: {integrity: sha512-zJ532qRchbIW3EA7tDzdZbjC14+VoAYAbC6MEhUqv0WSEWJLclPtetOVOIxXcmMxbRJjdMxQ/dg2cbYudUQnng==}
+  '@mewhhaha/little-worker-cli@0.1.7':
+    resolution: {integrity: sha512-Xx5OtwITkL6p19wCOv6q8wcxdFb5HOBoiWfr0ShAnABqkkoln1/pjCtV8te5CGpG/GPH9juuOylptrn7y0nw+g==}
     peerDependencies:
       prettier: ^3.0.3
 
-  '@mewhhaha/little-worker@0.1.5':
-    resolution: {integrity: sha512-5Md83hn/s8OYRe1TKxpcGPYS5r15ovv3p4pr59toKwDwu52uU0O0oWfVe/00A9/PF02DFlzNpwRrN43EAOLo7A==}
+  '@mewhhaha/little-worker@0.1.7':
+    resolution: {integrity: sha512-VgJRng3CsXOT9jRScAQen0kYEjY2rDULBtQszNIM8YEMY3euGAUhexWL5TsduiWxpIHKzSaJuW+ojRipUKxksg==}
     hasBin: true
     peerDependencies:
       prettier: ^3.0.3
 
-  '@mewhhaha/typed-request@0.1.4':
-    resolution: {integrity: sha512-02EoOUalvvHDdz8InLbNYFcgzB4jQElwcqAL2Gl/rOIVG18zg/nx9bfyqGm+KjiYwudK8XUhcl8buOWMMppK1g==}
+  '@mewhhaha/typed-request@0.1.5':
+    resolution: {integrity: sha512-pyR2BG1pTjpz6BatoZjsBqs6h4HuVBmfurXGv6EnSMXF4AV8rmL9EpYaRLiNiy4Ji+QCKImHfLn/485IHBcelg==}
 
-  '@mewhhaha/typed-response@0.1.4':
-    resolution: {integrity: sha512-5mGm/GDRgVJi9ZT8cCObzMj1mP5WSaNygHmnq4G4ER+nwgxS0r+TlCJ+wMtC506lyUZ+jNDGmbMhScyejDNWFA==}
+  '@mewhhaha/typed-response@0.1.5':
+    resolution: {integrity: sha512-JBewycIpoMAXJLeVzPg3Hfxd8a852NU56TFuvqAZuNxUoWz+P+wVfYmfq9LuKYS3vjMI1tjx4/ywnd+YpugPgg==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1863,31 +1863,31 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@mewhhaha/json-string@0.1.4': {}
+  '@mewhhaha/json-string@0.1.5': {}
 
-  '@mewhhaha/little-fetcher@0.1.4': {}
+  '@mewhhaha/little-fetcher@0.1.5': {}
 
-  '@mewhhaha/little-router@0.1.4': {}
+  '@mewhhaha/little-router@0.1.5': {}
 
-  '@mewhhaha/little-worker-cli@0.1.5(prettier@3.3.2)':
+  '@mewhhaha/little-worker-cli@0.1.7(prettier@3.3.2)':
     dependencies:
       prettier: 3.3.2
       yargs: 17.7.2
 
-  '@mewhhaha/little-worker@0.1.5(prettier@3.3.2)':
+  '@mewhhaha/little-worker@0.1.7(prettier@3.3.2)':
     dependencies:
-      '@mewhhaha/json-string': 0.1.4
-      '@mewhhaha/little-fetcher': 0.1.4
-      '@mewhhaha/little-router': 0.1.4
-      '@mewhhaha/little-worker-cli': 0.1.5(prettier@3.3.2)
-      '@mewhhaha/typed-request': 0.1.4
-      '@mewhhaha/typed-response': 0.1.4
+      '@mewhhaha/json-string': 0.1.5
+      '@mewhhaha/little-fetcher': 0.1.5
+      '@mewhhaha/little-router': 0.1.5
+      '@mewhhaha/little-worker-cli': 0.1.7(prettier@3.3.2)
+      '@mewhhaha/typed-request': 0.1.5
+      '@mewhhaha/typed-response': 0.1.5
       arktype: 2.0.0-dev.24
       prettier: 3.3.2
 
-  '@mewhhaha/typed-request@0.1.4': {}
+  '@mewhhaha/typed-request@0.1.5': {}
 
-  '@mewhhaha/typed-response@0.1.4': {}
+  '@mewhhaha/typed-response@0.1.5': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

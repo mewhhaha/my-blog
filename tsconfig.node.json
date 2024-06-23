@@ -7,7 +7,7 @@
     "types": ["@types/node"],
     "resolveJsonModule": true,
     "allowJs": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "checkJs": false,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,

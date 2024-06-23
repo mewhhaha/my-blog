@@ -5,7 +5,12 @@ compatibility_date = "2024-06-20"
 compatibility_flags = ["nodejs_compat"]
 
 
-rules = [{ type = "Text", globs = ["**/*.css"], fallthrough = false }]
+rules = [
+    { type = "Text", globs = [
+        "**/*.css",
+        "**/*.svg",
+    ], fallthrough = false },
+]
 
 [vars]
 ARTICLES_URL = "https://raw.githubusercontent.com/mewhhaha/my-blog/main/articles/"
