@@ -9,7 +9,7 @@ type Link = {
 
 const links: Link[] = [
   { path: to("/home"), label: "Home", end: true },
-  { path: to("/articles"), label: "Articles", end: true },
+  { path: to("/articles"), label: "Articles", end: false },
 ];
 
 type PageHeaderProps = {
