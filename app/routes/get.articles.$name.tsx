@@ -23,10 +23,13 @@ export default route(
   async ({ request, params: { name } }, env) => {
     const url = new URL(request.url);
 
-    const articleUrl = `${env.REPOSITORY_URL}/${env.GIT_SHA}/articles`;
+    const articleUrl = new URL(
+      `articles/${encodeURI(name)}.md`,
+      `${env.REPOSITORY_URL}/${env.GIT_SHA}/`,
+    );
 
-    console.log(articleUrl);
-    const md = new Request(new URL(`${encodeURI(name)}.md`, articleUrl), {
+    console.log(articleUrl.href);
+    const md = new Request(articleUrl.href, {
       method: "GET",
       headers: {
         "Cache-Control":
