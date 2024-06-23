@@ -4,7 +4,6 @@ import { match } from "../utils/match";
 import { Page } from "../components/Page";
 import { PageNav } from "../components/PageNav";
 import { fetchArticle } from "../utils/articles";
-import insane from "insane";
 
 export default route(
   "/articles/:name",

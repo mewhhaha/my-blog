@@ -29,15 +29,22 @@ base-uri 'none';
           <script
             /** @ts-expect-error nonce not part of types  */
             nonce={nonce}
-            async="true"
             src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"
           ></script>
           <script
             /** @ts-expect-error nonce not part of types  */
             nonce={nonce}
-            async="true"
-            src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/plugins/autoloader/prism-autoloader.min.js"
+            src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"
           ></script>
+          <script
+            /** @ts-expect-error nonce not part of types  */
+            nonce={nonce}
+          >
+            {`
+Prism.plugins.autoloader.languages_path = 'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/'
+document.addEventListener('htmx:afterRequest', () => { Prism.highlightAll(); });
+            `}
+          </script>
           <script
             /** @ts-expect-error nonce not part of types  */
             nonce={nonce}
