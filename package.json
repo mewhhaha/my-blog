@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "upload": "pnpm css && pnpm routes && wrangler deploy",
+    "upload": "pnpm css && pnpm routes && wrangler deploy --var GIT_SHA=$(git rev-parse HEAD)",
     "dev": "run-p dev.*",
     "dev.css": "tailwindcss -o public/tailwind.css --watch",
     "dev.routes": "little-worker routes --watch",

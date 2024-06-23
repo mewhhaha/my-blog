@@ -1,7 +1,8 @@
 import { router } from "./routes/_router";
 
 type Env = {
-  ARTICLES_URL: string;
+  REPOSITORY_URL: string;
+  GIT_SHA: string;
 };
 
 declare module "@mewhhaha/little-worker" {

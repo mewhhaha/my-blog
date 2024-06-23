@@ -4,12 +4,33 @@ import { match } from "../utils/match";
 import { Page } from "../components/Page";
 import { PageNav } from "../components/PageNav";
 
+const cached = async (request: Request) => {
+  const cache = caches.default;
+  const cachedResponse = await cache.match(request);
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+  const response = await fetch(request);
+  if (response.ok) {
+    cache.put(request, response.clone());
+  }
+  return response;
+};
+
 export default route(
   "/articles/:name",
   [],
   async ({ request, params: { name } }, env) => {
-    const url = new URL(`${name}.md`, env.ARTICLES_URL);
-    const response = await fetch(url);
+    const url = new URL(request.url);
+
+    const articleUrl = `${env.REPOSITORY_URL}/${env.GIT_SHA}/articles`;
+
+    const md = new Request(new URL(`${encodeURI(name)}.md`, articleUrl), {
+      method: "GET",
+      headers: { "Cache-Control": "max-age" },
+    });
+
+    const response = await cached(md);
 
     const content: string = await match(response.status, {
       200: async () => (
