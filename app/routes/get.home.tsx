@@ -1,12 +1,9 @@
-import { html, route } from "@mewhhaha/little-worker";
-import { Page } from "../components/Page";
-import { PageNav } from "../components/PageNav";
+import { route } from "@mewhhaha/little-worker";
 import { Link } from "../components/Link";
 import { to } from "../utils/path";
+import { page } from "../components/_htmx";
 
 export default route("/home", [], async ({ request }) => {
-  const url = new URL(request.url);
-
   const content = (
     <>
       <section class="mb-8">
@@ -33,19 +30,5 @@ export default route("/home", [], async ({ request }) => {
     </>
   );
 
-  if (request.headers.get("HX-Request")) {
-    return html(
-      200,
-      <>
-        <nav id="header-nav" hx-swap-oob="true">
-          <PageNav url={url} />
-        </nav>
-        <main id="page" hx-swap-oob="true">
-          {content}
-        </main>
-      </>,
-    );
-  }
-
-  return html(200, <Page url={url}>{content}</Page>);
+  return page(request, content);
 });

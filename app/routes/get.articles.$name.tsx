@@ -1,16 +1,13 @@
-import { html, route } from "@mewhhaha/little-worker";
+import { route } from "@mewhhaha/little-worker";
 import { marked } from "marked";
 import { match } from "../utils/match";
-import { Page } from "../components/Page";
-import { PageNav } from "../components/PageNav";
 import { fetchArticle } from "../utils/articles";
+import { page } from "../components/_htmx";
 
 export default route(
   "/articles/:name",
   [],
   async ({ request, params: { name } }, env) => {
-    const url = new URL(request.url);
-
     const response = await fetchArticle(env, name);
 
     const content: string = await match(response.status, {
@@ -28,20 +25,6 @@ export default route(
       [match.Default]: () => "Failed to fetch article",
     });
 
-    if (request.headers.get("HX-Request")) {
-      return html(
-        200,
-        <>
-          <nav id="header-nav" hx-swap-oob="morph">
-            <PageNav url={url} />
-          </nav>
-          <main id="page" hx-swap-oob="true">
-            {content}
-          </main>
-        </>,
-      );
-    }
-
-    return html(200, <Page url={url}>{content}</Page>);
+    return page(request, content);
   },
 );
