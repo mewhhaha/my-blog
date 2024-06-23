@@ -16,6 +16,7 @@
     "@cloudflare/workers-types": "^4.20240620.0",
     "@mewhhaha/little-worker": "^0.1.7",
     "@tailwindcss/typography": "^0.5.13",
+    "@types/insane": "^1.0.0",
     "@types/node": "^20.14.8",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "npm-run-all": "^4.1.5",
@@ -28,6 +29,7 @@
   "dependencies": {
     "@eslint/js": "^9.5.0",
     "eslint": "^9.5.0",
+    "insane": "^2.6.2",
     "marked": "^13.0.0",
     "typed-htmx": "^0.3.1",
     "typescript-eslint": "^7.13.1"

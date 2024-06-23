@@ -7,15 +7,9 @@ type Link = {
   end: boolean;
 };
 
-const articles = ["first"];
-
 const links: Link[] = [
   { path: to("/home"), label: "Home", end: true },
-  ...articles.map((article) => ({
-    path: to(`/articles/:name`, { name: article }),
-    label: article,
-    end: true,
-  })),
+  { path: to("/articles"), label: "Articles", end: true },
 ];
 
 type PageHeaderProps = {
@@ -24,16 +18,17 @@ type PageHeaderProps = {
 
 export const PageNav = ({ url }: PageHeaderProps) => {
   return (
-    <>
+    <div class="flex gap-4">
       {links.map((link) => {
         const active = matchPath(link.path, url.pathname, { end: link.end });
+
         return (
           <NavLink href={link.path} active={active}>
             {link.label}
           </NavLink>
         );
       })}
-    </>
+    </div>
   );
 };
 
@@ -65,4 +60,6 @@ const matchPath = (
       return false;
     }
   }
+
+  return true;
 };

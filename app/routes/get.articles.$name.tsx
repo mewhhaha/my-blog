@@ -3,19 +3,8 @@ import { marked } from "marked";
 import { match } from "../utils/match";
 import { Page } from "../components/Page";
 import { PageNav } from "../components/PageNav";
-
-const cached = async (request: Request) => {
-  const cache = caches.default;
-  const cachedResponse = await cache.match(request);
-  if (cachedResponse) {
-    return cachedResponse;
-  }
-  const response = await fetch(request);
-  if (response.ok) {
-    cache.put(request, response.clone());
-  }
-  return response;
-};
+import { fetchArticle } from "../utils/articles";
+import insane from "insane";
 
 export default route(
   "/articles/:name",
@@ -23,24 +12,20 @@ export default route(
   async ({ request, params: { name } }, env) => {
     const url = new URL(request.url);
 
-    const articleUrl = new URL(
-      `articles/${encodeURI(name)}.md`,
-      `${env.REPOSITORY_URL}/${env.GIT_SHA}/`,
-    );
-
-    const md = new Request(articleUrl.href, {
-      method: "GET",
-      headers: {
-        "Cache-Control":
-          env.GIT_SHA === "main" ? "" : "max-age=31536000, immutable",
-      },
-    });
-
-    const response = await cached(md);
+    const response = await fetchArticle(env, name);
 
     const content: string = await match(response.status, {
       200: async () => (
-        <article class="prose-2xl">{marked(await response.text())}</article>
+        <section class="mb-8">
+          <h2 class="border-b-2 border-black pb-2 text-2xl font-bold">
+            Drunken ramblings 🍻
+          </h2>
+          <article hx-disable class="prose-2xl pt-10">
+            {insane(await marked(await response.text()), {
+              allowedClasses: { code: ["language-tsx"], pre: ["language-tsx"] },
+            })}
+          </article>
+        </section>
       ),
       404: () => "Article not found",
       [match.Default]: () => "Failed to fetch article",
@@ -50,7 +35,7 @@ export default route(
       return html(
         200,
         <>
-          <nav id="header-nav" hx-swap-oob="morphdom">
+          <nav id="header-nav" hx-swap-oob="morph">
             <PageNav url={url} />
           </nav>
           <main id="page" hx-swap-oob="true">

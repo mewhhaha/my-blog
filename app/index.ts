@@ -1,9 +1,11 @@
 import { router } from "./routes/_router";
 
-type Env = {
-  REPOSITORY_URL: string;
-  GIT_SHA: string;
-};
+declare global {
+  type Env = {
+    REPOSITORY_URL: string;
+    GIT_SHA: string;
+  };
+}
 
 declare module "@mewhhaha/little-worker" {
   interface RouteData {

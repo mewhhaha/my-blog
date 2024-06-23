@@ -1,17 +1,14 @@
-type NavLinkProps = {
+type LinkProps = {
   href: string;
   children?: JSX.Element;
-  active?: boolean;
 };
 
-export const NavLink = ({ active, href, children }: NavLinkProps) => {
+export const Link = ({ href, children }: LinkProps) => {
   return (
     <a
-      id={`navlink:${href}`}
       href={href}
       hx-get={href}
-      hx-push-url={active ? "false" : "true"}
-      aria-current={active ? "page" : "false"}
+      hx-push-url="true"
       class="text-blue-500 underline visited:text-purple-600 hover:cursor-pointer hover:text-blue-700 active:text-blue-900 aria-current-page:text-black aria-current-page:no-underline aria-current-page:hover:underline"
     >
       {children}

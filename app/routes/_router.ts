@@ -1,6 +1,7 @@
 import { Router, type RouteData } from "@mewhhaha/little-worker";
 import route_Z2V0LmFydGljbGVzLiRuYW1lLnRzeA from "./get.articles.$name.js";
 import route_Z2V0LmhvbWUudHN4 from "./get.home.js";
+import route_Z2V0LmFydGljbGVzLnRzeA from "./get.articles.js";
 import route_Z2V0Ll9pbmRleC50c3g from "./get._index.js";
 import route_Z2V0LltmYXZpY29uLmljb10udHN4 from "./get.[favicon.ico].js";
 import route_Z2V0LiQudHN4 from "./get.$.js";
@@ -10,6 +11,7 @@ export const router = Router<
 >()
   .get(...route_Z2V0LmFydGljbGVzLiRuYW1lLnRzeA)
   .get(...route_Z2V0LmhvbWUudHN4)
+  .get(...route_Z2V0LmFydGljbGVzLnRzeA)
   .get(...route_Z2V0Ll9pbmRleC50c3g)
   .get(...route_Z2V0LltmYXZpY29uLmljb10udHN4)
   .get(...route_Z2V0LiQudHN4)
@@ -22,6 +24,7 @@ declare module "@mewhhaha/little-worker" {
     paths:
       | "/articles/:name"
       | "/home"
+      | "/articles"
       | "/"
       | "/favicon.ico"
       | "/*"
