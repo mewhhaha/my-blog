@@ -28,7 +28,6 @@ export default route(
       `${env.REPOSITORY_URL}/${env.GIT_SHA}/`,
     );
 
-    console.log(articleUrl.href);
     const md = new Request(articleUrl.href, {
       method: "GET",
       headers: {
