@@ -21,9 +21,7 @@ export default route(
             Drunken ramblings 🍻
           </h2>
           <article hx-disable class="prose-2xl pt-10">
-            {insane(await marked(await response.text()), {
-              allowedClasses: { code: ["language-tsx"], pre: ["language-tsx"] },
-            })}
+            {await marked(await response.text())}
           </article>
         </section>
       ),
