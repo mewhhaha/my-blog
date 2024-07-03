@@ -1,75 +1,65 @@
-const Null = Symbol();
-const Undefined = Symbol();
-const Default = Symbol();
 
-function s(value: undefined): typeof Undefined;
-function s(value: null): typeof Null;
-function s(value: "default"): typeof Default;
+const sNull = Symbol();
+const sUndefined = Symbol();
+const sDefault = Symbol();
+
+function s(value: undefined): typeof sUndefined;
+function s(value: null): typeof sNull;
+function s(value: 'default'): typeof sDefault;
 function s<VALUE>(value: VALUE): VALUE;
 
-function s(value: null | undefined | unknown | "default") {
+function s(value: null | undefined | unknown | 'default') {
   if (value === null) {
-    return Null;
+    return sNull;
   }
 
   if (value === undefined) {
-    return Undefined;
+    return sUndefined;
   }
 
-  if (value === "default") {
-    return Default;
+  if (value === 'default') {
+    return sDefault;
   }
 
   return value;
 }
 
-type serialize_value<
-  value extends string | number | bigint | boolean | null | undefined,
-> = value extends null
-  ? typeof Null
-  : value extends undefined
-    ? typeof Undefined
-    : value extends boolean
-      ? "true" | "false"
-      : `${value}`;
+type key = string | number | bigint | boolean | null | undefined;
+
+type serialize_value<value extends key> =
+  value extends null ? typeof sNull
+  : value extends undefined ? typeof sUndefined
+  : value extends boolean ? 'true' | 'false'
+  : `${value}`;
+
+type default_value<value extends key, r> =
+  string extends value ? Record<typeof sDefault, (value: value) => r>
+  : number extends value ? Record<typeof sDefault, (value: value) => r>
+  : bigint extends value ? Record<typeof sDefault, (value: value) => r>
+  : Record<typeof sDefault, (value: value) => r> | Record<never, never>;
+
+type handle_fallthrough<cases, fallthrough, value extends key> =
+  // There is no fallthrough defined
+  Record<never, never> extends fallthrough ?
+    // All keys are required
+    Pick<cases, serialize_value<value> extends keyof cases ? serialize_value<value> : never>
+  : // Make keys optional and include the fallthrough
+    Partial<
+      Pick<cases, serialize_value<value> extends keyof cases ? serialize_value<value> : never>
+    > &
+      fallthrough;
 
 export const match = <
   const VALUE extends string | number | bigint | boolean | null | undefined,
   const CASES extends {
     [value in VALUE as serialize_value<value>]: (value: value) => RETURN;
   },
-  const FALLTHROUGH extends string extends VALUE
-    ? Record<typeof Default, (value: VALUE) => RETURN>
-    : number extends VALUE
-      ? Record<typeof Default, (value: VALUE) => RETURN>
-      : bigint extends VALUE
-        ? Record<typeof Default, (value: VALUE) => RETURN>
-        :
-            | Record<typeof Default, (value: VALUE) => RETURN>
-            | Record<never, never>,
-  const RETURN = CASES[keyof CASES] extends (
-    value: unknown,
-  ) => infer return_type
-    ? return_type
-    : never,
+  const FALLTHROUGH extends default_value<VALUE, RETURN>,
+  const RETURN = CASES[keyof CASES] extends (value: unknown) => infer return_type ? return_type
+  : never,
 >(
   value: VALUE,
-  cases: Record<never, never> extends FALLTHROUGH
-    ? Pick<
-        CASES,
-        serialize_value<VALUE> extends keyof CASES
-          ? serialize_value<VALUE>
-          : never
-      >
-    : Partial<
-        Pick<
-          CASES,
-          serialize_value<VALUE> extends keyof CASES
-            ? serialize_value<VALUE>
-            : never
-        >
-      > &
-        FALLTHROUGH,
+  cases: handle_fallthrough<CASES, FALLTHROUGH, VALUE>,
 ): RETURN => {
   const replacedValue = s(value);
 
@@ -83,9 +73,9 @@ export const match = <
 
   // @ts-expect-error Hard to validate this in types
   // even though it's correct
-  return cases[s("default")](value);
+  return cases[s('default')](value);
 };
 
-match.Null = Null;
-match.Default = Default;
-match.Undefined = Undefined;
+match.Null = sNull;
+match.Default = sDefault;
+match.Undefined = sUndefined;
