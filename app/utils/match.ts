@@ -32,7 +32,7 @@ type serialize_value<value extends key> =
   : value extends boolean ? 'true' | 'false'
   : `${value}`;
 
-type default_value<value extends key, r> =
+type find_required_fallthrough<value extends key, r> =
   string extends value ? Record<typeof sDefault, (value: value) => r>
   : number extends value ? Record<typeof sDefault, (value: value) => r>
   : bigint extends value ? Record<typeof sDefault, (value: value) => r>
@@ -54,7 +54,7 @@ export const match = <
   const CASES extends {
     [value in VALUE as serialize_value<value>]: (value: value) => RETURN;
   },
-  const FALLTHROUGH extends default_value<VALUE, RETURN>,
+  const FALLTHROUGH extends find_required_fallthrough<VALUE, RETURN>,
   const RETURN = CASES[keyof CASES] extends (value: unknown) => infer return_type ? return_type
   : never,
 >(
@@ -76,6 +76,11 @@ export const match = <
   return cases[s('default')](value);
 };
 
+// Can be used to match null values { [match.Null]: () => {} }
 match.Null = sNull;
-match.Default = sDefault;
+
+// Can be used to match undefined values { [match.Undefined]: () => {} }
 match.Undefined = sUndefined;
+
+// Can be used to create a default match { [match.Default]: () => {} }
+match.Default = sDefault;
